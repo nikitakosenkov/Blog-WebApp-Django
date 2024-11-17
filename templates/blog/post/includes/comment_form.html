@@ -1,0 +1,16 @@
+<form action="{% url 'blog:post_comment' post.id %}" method="post">
+    {% csrf_token %}
+    <div class="row">
+        {% if user.is_authenticated %}
+            <h3>Add a new comment, {{ user.username }}</h3>
+            <div class="mt-2">
+                {{ form.body }}
+                <br>
+                <input type="submit" class="btn btn-primary mb-3 mt-2" value="Add comment">
+            </div>
+        {% else %}
+            <h3><a href="{% url 'login' %}">Login</a> to add comments</h3>
+        {% endif %}
+
+    </div>
+</form>

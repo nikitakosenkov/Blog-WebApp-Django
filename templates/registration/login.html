@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+{% block title %} Login {% endblock %}
+{% block content %}
+    <h2> Login </h2>
+    <a href="{% url 'signup' %}"  class="btn btn-lg active btn-block"
+       style="border-color: #2841a7; color: #2841a7; --bs-btn-padding-y: .3rem; --bs-btn-padding-x: 1rem; ">SignUp</a>
+    <a href="{% url 'social:begin' 'github' %}"  class="btn btn-lg active btn-block"
+       style="border-color: #2841a7; color: #2841a7; --bs-btn-padding-y: .3rem; --bs-btn-padding-x: 1rem;">Log In with GitHub</a>
+    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-lg active btn-block"
+       style="border-color: #2841a7; color: #2841a7; --bs-btn-padding-y: .3rem; --bs-btn-padding-x: 1rem;">Log In with Google</a>
+    <form method="post" class="form mt-4">
+        {{ form.username }}
+        {{ form.password }}
+        <div class="mb-4">Remember me: {{ form.remember_me }}</div>
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary btn-lg" value="Login">
+    </form>
+   <a href="{% url 'password_reset' %}">Reset Password</a>
+{% endblock %}
